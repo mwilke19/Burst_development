@@ -27,7 +27,7 @@ void addStar() {
     Particle star = new Particle()
       .setPosition(random(width), random(height))
       .setDiameter(int(random(1, 3)))
-      .setVelocity(-1, 1)
+      .setVelocity(-1,0)
       .setAcceleration(.5)
       .setFriction(.99)
       .setColor(_color)
@@ -42,17 +42,17 @@ void addBurst() {
   d_time = c_time-last_burst;
 
   if (last_burst == 0 || d_time >= burst_timer) {
-    color _color = color(255);
+    color _color = color(255,0,0);;
     if (mousePressed) {
       Particle explosion = new Explosion()
         .setPosition(mouseX, mouseY)
-        .setLength(5)
-        .setWidth(5)
-        .setVelocity(0, 1)
-        .setAcceleration(.5)
+        .setLength(10)
+        .setWidth(10)
+        .setVelocity(random(-1,1),random(-1,1))
+        .setAcceleration(.75)
         .setFriction(.99)
         .setColor(_color)
-        .setLifespan(250);
+        .setLifespan(125);
       burst.add(explosion);
       last_burst = c_time;
     }

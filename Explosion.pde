@@ -1,6 +1,6 @@
 ArrayList<Particle> burst = new ArrayList<Particle>();
 float last_burst = 0;
-float burst_timer = 250;
+float burst_timer = 15;
 class Explosion extends Particle {
   Explosion() {
     super();
@@ -18,7 +18,7 @@ class Explosion extends Particle {
     y_vel += accel;
   }
   void frict() {
-    //x_vel *= frict;
+    x_vel *= frict;
     y_vel *= frict;
   }
   //Bounce is used with velocity, acceleration and friction
@@ -28,15 +28,16 @@ class Explosion extends Particle {
   }
   //Moves Particle and decrements lifespan
   void move(ArrayList<Particle> burst) {
-    x += x_vel;
-    y += y_vel;
+    float rot = random(0, TWO_PI); 
+    x += x_vel*sin(rot);
+    y -= y_vel*cos(rot);
     lifespan-=1.0;
   }
   //Draws Particle to the screen
   void render() {
     push();
     fill(_color, lifespan);
-    rect(x, y, _width, _length);
+    ellipse(x, y, _width, _length);
     pop();
   }
   //Test to see if the Particle is dead
