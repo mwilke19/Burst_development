@@ -31,7 +31,7 @@ void addStar() {
       .setAcceleration(.5)
       .setFriction(.99)
       .setColor(_color)
-      .setLifespan(500);
+      .setLifespan(10);
     stars.add(star);
     last_star = c_time;
   }
@@ -48,9 +48,9 @@ void addBurst() {
         .setPosition(mouseX, mouseY)
         .setLength(10)
         .setWidth(10)
-        .setVelocity(random(-1,1),random(-1,1))
-        .setAcceleration(.75)
-        .setFriction(.99)
+        .setVelocity(1,1)
+        .setAcceleration(1)
+        .setFriction(.85)
         .setColor(_color)
         .setLifespan(125);
       burst.add(explosion);

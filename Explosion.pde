@@ -37,7 +37,7 @@ class Explosion extends Particle {
   void render() {
     push();
     fill(_color, lifespan);
-    ellipse(x, y, _width, _length);
+    rect(x, y, _width, _length);
     pop();
   }
   //Test to see if the Particle is dead
